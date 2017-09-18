@@ -10,5 +10,5 @@ Exercise guide
  ./gradlew build
  
  In eclipse: 
- Click the build tassk (in Gradle Tasks view)
+Gradle Tasks view >  Doubleclick the task 'build'
  

@@ -20,3 +20,31 @@ public class Lesson_04_streams_and_collections {
 	}
 
 }
+
+
+/*class Author {
+	   String name;
+	   int countOfBooks;
+	}
+
+	class Book {
+	   String name;
+	   int year;
+	   Author author;
+	}
+	Let’s imagine that we need to print all authors in a books collection who wrote a book after 2005. How would we do it in Java 7?
+
+	for (Book book : books) {
+	   if (book.author != null && book.year > 2005){
+	       System.out.println(book.author.name);
+	   }
+	}
+	And how would we do it in Java 8?
+
+
+	books.stream()
+	       .filter(book -> book.year > 2005)  // filter out books published in or before 2005
+	       .map(Book::getAuthor)              // get the list of authors for the remaining books
+	       .filter(Objects::nonNull)          // remove null authors from the list
+	       .map(Author::getName)              // get the list of names for the remaining authors
+	       .forEach(System.out::println);     // print the value of each remaining element*/

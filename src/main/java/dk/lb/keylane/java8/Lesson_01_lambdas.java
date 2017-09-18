@@ -11,3 +11,13 @@ public class Lesson_01_lambdas {
 	// static method
 	
 }
+
+
+// functional interface example
+ /*
+
+@FunctionalInterface
+interface Sum {
+  int add(int a, int b);
+}
+*/
