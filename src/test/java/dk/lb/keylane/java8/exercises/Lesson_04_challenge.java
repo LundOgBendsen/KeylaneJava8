@@ -37,3 +37,31 @@ public class Lesson_04_challenge {
 
 // 
 //ressource: http://winterbe.com/posts/2015/05/22/java8-concurrency-tutorial-atomic-concurrent-map-examples/
+
+/**
+ * Arrays.asList("a1", "a2", "b1", "c2", "c1")
+    .parallelStream()
+    .filter(s -> {
+        System.out.format("filter: %s [%s]\n",
+            s, Thread.currentThread().getName());
+        return true;
+    })
+    .map(s -> {
+        System.out.format("map: %s [%s]\n",
+            s, Thread.currentThread().getName());
+        return s.toUpperCase();
+    })
+    .sorted((s1, s2) -> {
+        System.out.format("sort: %s <> %s [%s]\n",
+            s1, s2, Thread.currentThread().getName());
+        return s1.compareTo(s2);
+    })
+    .forEach(s -> System.out.format("forEach: %s [%s]\n",
+        s, Thread.currentThread().getName()));
+        
+        
+        from: http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
+        */
+
+
+// parallel reduce

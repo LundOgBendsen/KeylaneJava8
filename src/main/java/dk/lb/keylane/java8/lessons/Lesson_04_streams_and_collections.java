@@ -22,23 +22,8 @@ public class Lesson_04_streams_and_collections {
 }
 
 
-/*class Author {
-	   String name;
-	   int countOfBooks;
-	}
-
-	class Book {
-	   String name;
-	   int year;
-	   Author author;
-	}
-	Let’s imagine that we need to print all authors in a books collection who wrote a book after 2005. How would we do it in Java 7?
-
-	for (Book book : books) {
-	   if (book.author != null && book.year > 2005){
-	       System.out.println(book.author.name);
-	   }
-	}
+/*
+	Let’s imagine that we need to print all authors in a books collection who wrote a book after 2005. 
 	And how would we do it in Java 8?
 
 

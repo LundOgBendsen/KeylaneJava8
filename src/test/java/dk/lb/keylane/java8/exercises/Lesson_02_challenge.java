@@ -22,6 +22,8 @@ public class Lesson_02_challenge {
 		  .map(v -> v * v)
 		  .blockingSubscribe(System.out::println);
 		
+		//TODO add fixme and test
+		
 	}
 	
 	// advanced comparator
@@ -89,9 +91,3 @@ public class Lesson_02_challenge {
     
 }
 
-
-// reactive runner  
-
-// reactive + subscribe in parallel + error handling
-
-// comparator

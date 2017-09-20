@@ -2,6 +2,7 @@ package dk.lb.keylane.java8.answers;
 
 import static org.junit.Assert.*;
 
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class Lesson_03_date_time {
 	public void java8_datesAreImmutable() {
 		LocalDateTime date = LocalDateTime.now();
 		Duration durationtoAdd = Duration.of(1, ChronoUnit.HOURS);
-		LocalDateTime date2 = date; // FIXME: See if you can find a way to add the durationToAdd to the date
+		LocalDateTime date2 = date.plus(durationtoAdd); 
 		assertNotSame(date2, date);
 	}
 
@@ -32,13 +33,13 @@ public class Lesson_03_date_time {
 	
 	@Test
 	public void waitingForSaturdayAndAdjustingDatesBySemantic() {
-		LocalDate now = null; // FIXME: use the of method to create a date that represents 2017-09-22
+		LocalDate now = LocalDate.of(2017,  9,  22); // FIXME: use the of method to create a date that represents 2017-09-22
 
 		assertEquals(2017, now.getYear());
 		assertEquals(9, now.getMonthValue()); 
 		assertEquals(22, now.getDayOfMonth()); // it's a Friday
 
-		LocalDate saturday = now.with(TemporalAdjusters.next(null)); // FIXME: find out how to get the next Saturday.
+		LocalDate saturday = now.with(TemporalAdjusters.next( DayOfWeek.SATURDAY)); // FIXME: find out how to get the next Saturday.
 
 		assertEquals(2017, saturday.getYear());
 		assertEquals(9, saturday.getMonthValue());
@@ -46,11 +47,11 @@ public class Lesson_03_date_time {
 	}
 	
 	@Test
-	public void weWakeUpInCopenhagenBeforeHawai() {
-		ZonedDateTime copenhagen = ZonedDateTime.now(ZoneId.of("")); // FIXME: How do we find out the Zone of Copenhagen?
-		ZonedDateTime hawai = ZonedDateTime.now(ZoneId.of("US/Hawaii"));
+	public void weWakeUpInCopenhagenBeforeCalifornia() {
+		ZonedDateTime copenhagen = ZonedDateTime.now(ZoneId.of("Europe/Copenhagen")); // FIXME: How do we find out the Zone of Copenhagen?
+		ZonedDateTime california = ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
 
-		assertTrue(copenhagen.isBefore(hawai));
+		assertTrue(copenhagen.isBefore(california));
 	}
 	
 	

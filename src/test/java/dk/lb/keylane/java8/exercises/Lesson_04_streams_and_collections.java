@@ -1,7 +1,6 @@
 package dk.lb.keylane.java8.exercises;
 
-import static org.hamcrest.CoreMatchers.everyItem;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,11 +69,6 @@ public class Lesson_04_streams_and_collections {
 
 	
 
-	// Filter
-
-	// Flatmap
-
-	// comparator
 
 	// partition by
 
@@ -83,8 +77,6 @@ public class Lesson_04_streams_and_collections {
 	// collect
 
 	// oldestperson
-	
-	// sum of numbers
 
 	// summary statistics
 
