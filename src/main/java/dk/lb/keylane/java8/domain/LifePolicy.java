@@ -23,6 +23,52 @@ public class LifePolicy {
 		this.personId = personId;
 		this.status = status;
 	}
+	
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((personId == null) ? 0 : personId.hashCode());
+		result = prime * result + ((policyId == null) ? 0 : policyId.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LifePolicy other = (LifePolicy) obj;
+		if (personId == null) {
+			if (other.personId != null)
+				return false;
+		} else if (!personId.equals(other.personId))
+			return false;
+		if (policyId == null) {
+			if (other.policyId != null)
+				return false;
+		} else if (!policyId.equals(other.policyId))
+			return false;
+		if (status != other.status)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+
 
 	public String getUser() {
 		return user;
@@ -61,20 +107,21 @@ public class LifePolicy {
 				LifePolicyStatus status);
 	}
 
-	public static List<LifePolicy> getSomePolicies( int amount ) {
-		List<String> names = Arrays.asList("Anna", "Bent", "Cecilie", "Dennis");
-		List<String> lastNames = Arrays.asList("Hansen", "Pedersen", "Olsen");
+	public static List<LifePolicy> getSomePolicies( int amount ) {	
+		return IntStream.rangeClosed(1, amount).mapToObj( LifePolicy::getPolicyFromId )
+		.collect( Collectors.toList() );	
+	}
+	
+	public static LifePolicy getPolicyFromId(int i){
+		final List<String> names = Arrays.asList("Anna", "Bent", "Cecilie", "Dennis");
+		final List<String> lastNames = Arrays.asList("Hansen", "Pedersen", "Olsen");
 		
-		return IntStream.rangeClosed(1, amount).mapToObj( i -> 
-			new LifePolicy( 
-					names.get(i % names.size()) + " "+ lastNames.get( i % lastNames.size()),
-					Integer.toString(i),
-					"010170-"+i, 
-					(i%2==0)?LifePolicyStatus.valid: LifePolicyStatus.invalid 
-					)
-			)
-		.collect( Collectors.toList() );
-		
+		return new LifePolicy( 
+				names.get(i % names.size()) + " "+ lastNames.get( i % lastNames.size()),
+				Integer.toString(i),
+				"010170-"+i, 
+				(i%2==0)?LifePolicyStatus.valid: LifePolicyStatus.invalid 
+				);
 		
 	}
 

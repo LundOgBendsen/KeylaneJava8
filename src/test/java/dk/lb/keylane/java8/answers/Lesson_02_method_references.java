@@ -1,9 +1,9 @@
-package dk.lb.keylane.java8.exercises;
+package dk.lb.keylane.java8.answers;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -18,14 +18,15 @@ import dk.lb.keylane.java8.domain.LifePolicy.LifePolicyFactory;
 import dk.lb.keylane.java8.domain.LifePolicy.LifePolicyStatus;
 
 public class Lesson_02_method_references {
-
+	
 	@Test
 	public void createLifePolicyFactoryUsingMethodReferenceToConstructor() throws Exception {
 
-		LifePolicyFactory factory = null; // FIXME: create a factory using a
+		LifePolicyFactory factory = LifePolicy::new; // FIXME: create a factory using a
 											// method reference to the
 											// constructror in LifePolicy
 		LifePolicy policy = factory.getLifePolicy("Anna", "1", "cpr", LifePolicyStatus.valid);
+
 		assertEquals("Anna", policy.getUser());
 	}
 	
@@ -34,9 +35,8 @@ public class Lesson_02_method_references {
 	@Test
 	public void simpleReferenceWithForEach() throws Exception {
 		
-		
-		 List<LifePolicy> newPolicies = IntStream.range(0,2).mapToObj(  
-				 i -> (LifePolicy) null  //FIXME pass a method reference to the getPolicyFromId method in the class LifePolicy instead of this lambda
+		//FIXME pass a method reference to the getPolicyFromId method in the class LifePolicy
+		 List<LifePolicy> newPolicies = IntStream.range(0,2).mapToObj(  LifePolicy::getPolicyFromId 
 				 ).collect(Collectors.toList());
 		 
 		 assertThat( newPolicies.size(), is(2)); 
@@ -50,11 +50,9 @@ public class Lesson_02_method_references {
 	@Test
 	public void sortPoliciesUsingAComparator() {
 		List<LifePolicy> policies = LifePolicy.getSomePolicies(4);
-	
-		// FIXME: take a look the the comparing static method on Comparator.
-				// Pass in the method reference for getUser() .
-				// This creates one comparator.
-		Collections.sort(policies, null);	
+		
+		Comparator<LifePolicy> byUser = Comparator.comparing(LifePolicy::getUser);
+		Collections.sort(policies, byUser);	
 
 		assertThat( policies, IsIterableContainingInOrder.contains( 
 				LifePolicy.getPolicyFromId(4), 
@@ -75,7 +73,8 @@ public class Lesson_02_method_references {
 		// the getPersonId()
 		// method for comparing.
 		
-		Collections.sort(policies, null );	
+		Comparator<LifePolicy> byStatusThenPersonId = Comparator.comparing(LifePolicy::getStatus).thenComparing(LifePolicy::getPersonId);
+		Collections.sort(policies, byStatusThenPersonId );	
 		
 		assertThat( policies, IsIterableContainingInOrder.contains(
 				LifePolicy.getPolicyFromId(2), 
@@ -84,6 +83,7 @@ public class Lesson_02_method_references {
 				LifePolicy.getPolicyFromId(3)) 
 				);
 	}
+
 
 
 }
