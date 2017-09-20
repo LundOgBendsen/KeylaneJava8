@@ -29,16 +29,7 @@ public class Lesson_03_optional {
 		}
 
 	}
-
-	@Test
-	public void optionalsGiveYouSemantic() {
-		Person lars = new Person("Lars", Optional.of("Running"));
-
-		boolean larsHasInteresets = lars.getInterests().isPresent();
-
-		assertFalse(larsHasInteresets); // FIXME: no optional present. So false can't be true ;)
-	}
-
+	
 	@Test
 	public void optionalsAreOptional() {
 		Optional<String> optional = Optional.of(null); // FIXME: find out how to create an optional of null
@@ -47,5 +38,18 @@ public class Lesson_03_optional {
 
 		assertEquals("UNDEFINED", value);
 	}
+
+	@Test
+	public void optionalsGiveYouSemantic() {
+		Person lars = new Person("Lars", Optional.of("Running"));
+		boolean larsHasInteresets = false;  // FIXME: how to check if Lars has any interests?
+		assertTrue(larsHasInteresets);
+		
+		Person lene = new Person("Lene", null); // FIXME: Lene does not have any interests, but how do we express that, and avoid a NullPointer exception ?
+		boolean leneHasInterests = true; // FIXME:  how to check if lene has any interests
+		assertFalse(leneHasInterests);
+	}
+
+	
 
 }
