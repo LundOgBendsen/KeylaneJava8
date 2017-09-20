@@ -1,40 +1,32 @@
 package dk.lb.keylane.java8.lessons;
 
+import java.util.function.Function;
+
 public class Lesson_01_lambdas {
 
 	// instead of an anonymous inner class
-	
-	// method references - 3 ways
-	
-	// lambda
-	
-//	for (int i = 1; i <= 10; i++) {
-//
-//		int number = i;
-//
-//		Runnable runnable = () -> System.out
-//		.println(“The number with a lambda is ” + number);
-//
-//		Thread thread = new Thread(runnable);
-//
-//		thread.start();
-//
-//		}
-	// from: https://alexandreesl.com/2015/06/03/java-8-knowing-the-new-features-lambdas/
+	public static void main(String[] args) {
+		
+		// Creating a lambda
+		
+		Runnable task = () -> System.out.println("Hello " + Thread.currentThread().getName()) ;
+
+		task.run();
+
+		Thread thread = new Thread(task);
+		thread.start();
+		
+		System.out.println("Done!");
+		
+		//Lets look at the function interface
+		Function<Integer, Double> milesToKms =   (input) -> 1.6 * input; //override the S-A-M
+		
+        int miles = 3;
+        double kms = milesToKms.apply(miles); 
+        System.out.printf("%d miles = %3.2f kilometers\n",  miles, kms);
+		
+	}
 
 
-	
-	//constructor reference
-	// static method
-	
+
 }
-
-
-// functional interface example
- /*
-
-@FunctionalInterface
-interface Sum {
-  int add(int a, int b);
-}
-*/

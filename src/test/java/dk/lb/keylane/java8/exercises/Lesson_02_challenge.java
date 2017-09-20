@@ -2,15 +2,27 @@ package dk.lb.keylane.java8.exercises;
 
 import static org.junit.Assert.*;
 
+import java.util.function.Supplier;
+
 import org.junit.Test;
 
-import io.reactivex.Flowable;
+import dk.lb.keylane.java8.domain.LifePolicy;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subscribers.TestSubscriber;
 
 public class Lesson_02_challenge {
 
+	
+	@Test
+	public void writeALifePolicySupplier() throws Exception {
+		
+		//we have a static method in lifePolicy called getSomePolicies ... let us implement the Supplier interface instead
+		Supplier<LifePolicy> policySupplier = () -> null; //FIXME supply a policy
+		
+		LifePolicy policy = null; // FIXME use the policySupplier to create a policy
+		assertNotNull( policy );
+		
+	}
 	
 	@Test
 	public void helloRx() throws Exception {
@@ -32,7 +44,7 @@ public class Lesson_02_challenge {
 				//Append another one by using the default method thenComparing and use the getRole
 				// method for comparing.
 	
-	
+
 	
     /**
      * Observables are ultimately about handling "streams" of items (i.e. more than one item) in a "data pipeline".
