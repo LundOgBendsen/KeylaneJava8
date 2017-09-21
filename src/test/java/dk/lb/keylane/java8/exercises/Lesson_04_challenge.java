@@ -65,3 +65,7 @@ public class Lesson_04_challenge {
 
 
 // parallel reduce
+
+//flatmap & optional to avoid nullpointer exceptions
+
+//transmogrif

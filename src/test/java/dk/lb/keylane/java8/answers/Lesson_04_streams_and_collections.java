@@ -11,6 +11,7 @@ import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Test;
 
 import dk.lb.keylane.java8.domain.LifePolicy;
+import dk.lb.keylane.java8.domain.LifePolicy.LifePolicyStatus;
 
 /**
  * Inspired by://ressource :
@@ -53,18 +54,18 @@ public class Lesson_04_streams_and_collections {
 
 	@Test
 	public void howManyPoliciesAreValidUsingReduce() {
-		List<LifePolicy> policies = LifePolicy.getSomePolicies(5);
-		int sum = 0;
+		List<LifePolicy> policies = LifePolicy.getSomePolicies(15);
+		int sum = policies.stream().map(policy -> policy.getStatus() == LifePolicyStatus.valid?1:0).reduce( 0, (i, j) -> i+j  );
 		// FIXME: you have to use reduce. Write an accumulator that sums valid policies.
-		// sum = policies.stream().reduce(sum, ... );
+		// sum = policies.stream().map().reduce(sum, ... );
 
-		assertEquals(3, sum);
+		assertEquals(7, sum);
 	}
 	
 	@Test
 	public void howManyPeopleHaveTheLastNameOlsen() throws Exception {
 		List<LifePolicy> policies = LifePolicy.getSomePolicies(8);
-		int sum = 0;
+		long sum = policies.stream().filter( policy -> policy.getUser().contains("Olsen")).count();
 		
 		// FIXME: use filter and a collector to find out how many policies have a user, whose name contains "Olsen"
 		// sum = policies.stream().filter(...).collect(...)
@@ -72,17 +73,5 @@ public class Lesson_04_streams_and_collections {
 		assertEquals(3, sum);
 	}
 
-	
-
-
-	// partition by
-
-	// group by
-
-	// collect
-
-	// oldestperson
-
-	// summary statistics
 
 }
