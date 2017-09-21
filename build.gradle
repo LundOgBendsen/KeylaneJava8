@@ -23,7 +23,7 @@ dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
 	//Reactive - a suggested framework to use in the rewrite of communication with frontend
-	compile "io.reactivex.rxjava2:rxjava:2.1.3"
+	//compile "io.reactivex.rxjava2:rxjava:2.1.3"
 
       testCompile 'junit:junit:4.12'
 	testCompile 'org.hamcrest:hamcrest-library:1.3' //nice hamcrest matchers
