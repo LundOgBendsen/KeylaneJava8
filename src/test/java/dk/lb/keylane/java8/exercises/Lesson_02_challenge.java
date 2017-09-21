@@ -38,12 +38,6 @@ public class Lesson_02_challenge {
 		
 	}
 	
-	// advanced comparator
-	// FIXME: take a look the the comparing static method on Comparator. Pass in the method reference for getPolicyId() .
-				// This creates one comparator. 
-				//Append another one by using the default method thenComparing and use the getRole
-				// method for comparing.
-	
 
 	
     /**

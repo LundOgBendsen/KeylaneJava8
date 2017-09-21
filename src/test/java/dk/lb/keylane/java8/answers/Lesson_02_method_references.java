@@ -22,9 +22,7 @@ public class Lesson_02_method_references {
 	@Test
 	public void createLifePolicyFactoryUsingMethodReferenceToConstructor() throws Exception {
 
-		LifePolicyFactory factory = LifePolicy::new; // FIXME: create a factory using a
-											// method reference to the
-											// constructror in LifePolicy
+		LifePolicyFactory factory = LifePolicy::new; 
 		LifePolicy policy = factory.getLifePolicy("Anna", "1", "cpr", LifePolicyStatus.valid);
 
 		assertEquals("Anna", policy.getUser());
@@ -35,7 +33,6 @@ public class Lesson_02_method_references {
 	@Test
 	public void simpleReferenceWithForEach() throws Exception {
 		
-		//FIXME pass a method reference to the getPolicyFromId method in the class LifePolicy
 		 List<LifePolicy> newPolicies = IntStream.range(0,2).mapToObj(  LifePolicy::getPolicyFromId 
 				 ).collect(Collectors.toList());
 		 
@@ -66,13 +63,7 @@ public class Lesson_02_method_references {
 	public void sortPoliciesUsingAMoreComplexComparator() throws Exception {
 		List<LifePolicy> policies = LifePolicy.getSomePolicies(4);
 		
-		// FIXME: take a look the the comparing static method on Comparator.
-		// Pass in the method reference for getState() .
-		// This creates one comparator.
-		// Append another one by using the default method thenComparing and use
-		// the getPersonId()
-		// method for comparing.
-		
+	
 		Comparator<LifePolicy> byStatusThenPersonId = Comparator.comparing(LifePolicy::getStatus).thenComparing(LifePolicy::getPersonId);
 		Collections.sort(policies, byStatusThenPersonId );	
 		
