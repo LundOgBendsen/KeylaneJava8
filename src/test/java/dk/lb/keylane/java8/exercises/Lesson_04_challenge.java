@@ -70,7 +70,8 @@ public class Lesson_04_challenge {
 	@Test
 	public void testSerialToParallel() {
 		IntStream range = IntStream.range(0, 100);
-		// assertEquals(328350, SerialToParallel.sumOfSquares(range));
+		//FIXME write a method to compute sum of squares in parallel. Hint can you use reduce?
+		// assertEquals(328350, sumOfSquares(100));
 	}
 }
 
