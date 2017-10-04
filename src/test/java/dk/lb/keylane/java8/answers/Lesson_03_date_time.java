@@ -48,10 +48,10 @@ public class Lesson_03_date_time {
 	
 	@Test
 	public void weWakeUpInCopenhagenBeforeCalifornia() {
-		ZonedDateTime copenhagen = ZonedDateTime.now(ZoneId.of("Europe/Copenhagen")); // FIXME: How do we find out the Zone of Copenhagen?
-		ZonedDateTime california = ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
+		LocalDateTime copenhagen = ZonedDateTime.now(ZoneId.of("Europe/Copenhagen")).toLocalDateTime(); // FIXME: How do we find out the Zone of Copenhagen?
+		LocalDateTime california = ZonedDateTime.now(ZoneId.of("America/Los_Angeles")).toLocalDateTime();
 
-		assertTrue(copenhagen.isBefore(california));
+		assertTrue(copenhagen.isAfter(california));
 	}
 	
 	

@@ -19,7 +19,7 @@ public class Lesson_02_method_references {
 
 		List<String> names = Arrays.asList("Don", "King", "Kong");
 		//static method reference 
-		formatAndPrint(String::join, ", ", names);
+		formatAndPrint(String::join, "+ ", names);
 
 	}
 
